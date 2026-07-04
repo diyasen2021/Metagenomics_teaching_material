@@ -1,5 +1,5 @@
 
-# From Raw Reads to Microbial Genomes: A Student Guide to MAG Building
+# From Raw Reads to Microbial Genomes
 
 **Based on:** [GTN Tutorial — Building and Annotating MAGs from Short Metagenomics Paired Reads](https://training.galaxyproject.org/training-material/topics/microbiome/tutorials/mags-building/tutorial.html)  
 **Environment:** Linux / HPC / WSL2 (command-line)  
