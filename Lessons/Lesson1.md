@@ -124,6 +124,8 @@ conda activate qc
 
 # Download both SRA runs (paired-end FASTQ)
 cd 00_raw
+prefetch SRR24759598
+prefetch SRR24759616
 fasterq-dump --split-files --threads 8 SRR24759598
 fasterq-dump --split-files --threads 8 SRR24759616
 gzip *.fastq        # compress to save space
