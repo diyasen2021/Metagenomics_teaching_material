@@ -376,35 +376,7 @@ At this point you have a refined MAG assembled solely from reads recruited to th
 
 ---
 
-# Step 13 — Oxford Nanopore Sequencing
-
-Sequence the same DNA using Oxford Nanopore.
-
-The paper used
-
-- MinION Mk1B
-- R9.4.1 flow cell
-
-Basecalling (modern workflow using Dorado):
-
-```bash
-dorado basecaller \
-dna_r10.4.1_e8.2_400bps_sup@v5 \
-fast5/ \
-> nanopore.fastq
-```
-
-Adapter trimming
-
-```bash
-porechop \
--i nanopore.fastq \
--o nanopore_trimmed.fastq
-```
-
----
-
-# Step 14 — Hybrid Scaffolding
+# Step 13 — Hybrid Scaffolding
 
 Use Nanopore reads to connect Illumina contigs.
 
@@ -425,7 +397,7 @@ Long reads bridge repetitive regions that Illumina cannot resolve.
 
 ---
 
-# Step 15 — Polish the Genome
+# Step 14 — Polish the Genome
 
 Map Illumina reads.
 
@@ -467,7 +439,7 @@ Pilon corrects
 
 ---
 
-# Step 16 — Assess Genome Quality
+# Step 15 — Assess Genome Quality
 
 ```bash
 checkm lineage_wf \
@@ -489,7 +461,7 @@ These values indicate a high-quality MAG.
 
 ---
 
-# Step 17 — Gene Prediction
+# Step 16 — Gene Prediction
 
 ```bash
 prodigal \
@@ -501,7 +473,7 @@ prodigal \
 
 ---
 
-# Step 18 — Functional Annotation
+# Step 17 — Functional Annotation
 
 Example with EggNOG.
 
@@ -558,7 +530,7 @@ Extract Reads
 Final Reassembly
       │
       ▼
-Nanopore Sequencing
+Nanopore Sequence Data
       │
       ▼
 Hybrid Scaffolding (npScarf)
