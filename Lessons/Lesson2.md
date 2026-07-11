@@ -561,22 +561,29 @@ Functional Annotation
 Nanopore reads
       │
       ▼
+      
 metaFlye (--meta)
       │
       ▼
+      
 Medaka
       │
       ▼
+      
 Map Illumina reads
       │
       ▼
+      
 Polypolish (or Pilon)
       │
       ▼
+      
 MetaBAT2
       │
       ▼
+      
 CheckM2
       │
       ▼
+      
 Annotation
