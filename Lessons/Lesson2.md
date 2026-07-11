@@ -548,7 +548,7 @@ Final High-Quality MAG
 Functional Annotation
 ```
 
-# Key Takeaways
+# Key takeaways
 
 - Initial metagenome assemblies often contain contamination and fragmented genomes.
 - Iterative read recruitment (90% then 97% identity) enriches reads belonging to the target organism and improves MAG quality.
@@ -556,3 +556,27 @@ Functional Annotation
 - Nanopore long reads are used to scaffold Illumina contigs, increasing genome continuity.
 - Illumina reads are then used to polish the assembly, correcting errors introduced by long-read sequencing.
 - The final product is a high-quality metagenome-assembled genome suitable for downstream metabolic reconstruction and comparative genomics.
+
+# Improvemets with long reads
+Nanopore reads
+      │
+      ▼
+metaFlye (--meta)
+      │
+      ▼
+Medaka
+      │
+      ▼
+Map Illumina reads
+      │
+      ▼
+Polypolish (or Pilon)
+      │
+      ▼
+MetaBAT2
+      │
+      ▼
+CheckM2
+      │
+      ▼
+Annotation
