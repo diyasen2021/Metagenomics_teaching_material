@@ -378,55 +378,7 @@ cat 06_binning/checkm2/quality_report.tsv | column -t
 
 ---
 
-## Step 10 — Functional Annotation with Prokka
 
-For older Nanopore assemblies, Prokka is preferred over Bakta because the polished assembly may still contain occasional indel errors causing frameshifts. Prokka's `--metagenome` mode is more tolerant of partial ORFs.
-
-```bash
-conda activate prokka
-
-for BIN in 06_binning/bins/*.fa; do
-    BINNAME=$(basename ${BIN} .fa)
-
-    COMPLETENESS=$(grep "${BINNAME}" 06_binning/checkm2/quality_report.tsv | awk '{print $2}')
-    echo "Bin: ${BINNAME}  Completeness: ${COMPLETENESS}%"
-
-    if (( $(echo "${COMPLETENESS} >= 75" | bc -l) )); then
-        prokka \
-            --outdir    07_annotation/${BINNAME} \
-            --prefix    ${BINNAME} \
-            --metagenome \
-            --rfam \
-            --cpus      ${THREADS} \
-            --kingdom   Bacteria \
-            ${BIN}
-        echo "Annotated: ${BINNAME}"
-    else
-        echo "Skipped (low completeness): ${BINNAME}"
-    fi
-done
-```
-
----
-
-## Key Differences from Illumina Pipeline — Summary
-
-| Step | Illumina pipeline | Older Nanopore (this pipeline) |
-|---|---|---|
-| QC tool | fastp | NanoPlot |
-| Trim/filter | fastp (adapters) | filtlong (length + quality) |
-| Adapter removal | Required | Done by Guppy already |
-| Assembler | MEGAHIT | Flye `--meta --nano-raw` |
-| Polishing | None needed | Racon ×3 + Medaka (essential) |
-| Medaka model | n/a | Must match chemistry/basecaller |
-| Read mapper | bowtie2 | minimap2 `-ax map-ont` |
-| Expected N50 | ~2,000 bp | ~200,000–800,000 bp |
-| Expected contigs | 50,000–500,000 | 200–5,000 |
-| Circular contigs | Rare | Common for dominant organisms |
-| Binning min length | 1,500 bp | 1,000 bp |
-| Annotation tool | Bakta | Prokka `--metagenome` |
-
----
 
 ## Common Pitfalls for Older Nanopore Data
 
