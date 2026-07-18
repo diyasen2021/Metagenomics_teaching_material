@@ -35,20 +35,6 @@ Older Nanopore chemistry (R9.4.1, R9.5) produces reads with:
 
 > Check your Guppy log or MinKNOW run report for the exact basecaller version. If unsure, `r941_min_high_g360` is the safest default for older R9.4.1 data.
 
----
-
-## Environment Installation
-
-```bash
-conda create -n nanopore_qc  -y nanoplot filtlong
-conda create -n flye         -y flye
-conda create -n assembly     -y quast
-conda create -n polishing    -y minimap2 samtools racon
-conda create -n medaka       -y medaka
-conda create -n binning      -y metabat2
-conda create -n checkm2      -y checkm2
-conda create -n prokka       -y prokka
-```
 
 > **Medaka GPU note:** Medaka runs on CPU but is very slow (~8–12 hours for large assembly). On GPU (CUDA): 30–60 minutes. If your HPC has GPUs, request one.
 
@@ -59,7 +45,7 @@ conda create -n prokka       -y prokka
 Edit these variables for your dataset before running:
 
 ```bash
-SAMPLE="drosophila_gut"
+SAMPLE="your_sample"
 RAW_FASTQ="raw_reads/${SAMPLE}.fastq.gz"
 THREADS=16
 MIN_READ_LEN=1000           # discard reads shorter than 1 kb
